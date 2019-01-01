@@ -11,6 +11,7 @@ public class SwaggerController {
 
     @RequestMapping(value = "/api/v1", method = RequestMethod.GET)
     public String api() {
+        System.out.println("test");
         return "swagger/index";
     }
 
