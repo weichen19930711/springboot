@@ -1,1 +1,20 @@
+spring:
+  profiles:
+    active: dev
 
+server:
+  port: 8080
+
+person:
+  last-name: zs
+  age: 18
+  boss: false
+  birth: 2019/10/11
+  maps: {k1: v1, k2: 12}
+  lists:
+    - lisi
+    - zhaoliu
+  Dog:
+    name: 小狗
+    age: 2
+  last-name1: zws
