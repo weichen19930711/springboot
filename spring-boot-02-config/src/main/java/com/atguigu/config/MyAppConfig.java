@@ -4,7 +4,16 @@ import com.atguigu.service.HelloService;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.ImportResource;
-
+/**
+ * @ImportResource： 导入Spring的配置文件，让配置文件里面的内容生效；
+ * Spring Boot里面没有Spring的配置文件，我们自己编写的配置文件，也不能自动识别；
+ * 想让Spring的配置文件生效，加载进来；@ImportResource标注在一个配置类上
+ *
+ * @Configuration：指明当前类是一个配置类；就是来替代之前的Spring配置文件
+ *
+ * 在配置文件中用<bean><bean/>标签添加组件
+ *
+ */
 @ImportResource(locations = {"classpath:beans.xml"})
 @Configuration
 public class MyAppConfig {
