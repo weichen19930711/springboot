@@ -3,5 +3,9 @@
        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
        xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
 
-  <bean id="helloService" class="com.atguigu.service.HelloService"></bean>
+  <bean id="helloService" class="com.atguigu.service.HelloService">
+    <property name="num1" value="test1"></property>
+    <property name="num2" value="${person.last-name}"></property>
+    <property name="num3" value="#{11*2}"></property>
+  </bean>
 </beans>

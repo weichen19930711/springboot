@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<configuration>
+  <!--
+    ${
+      CONSOLE_LOG_PATTERN:-
+      %clr(%d{${LOG_DATEFORMAT_PATTERN:-yyyy-MM-dd HH:mm:ss.SSS}}){faint}
+      %clr(${LOG_LEVEL_PATTERN:-%5p})
+      %clr(${PID:- }){magenta}
+      %clr(-){faint}
+      %clr([%15.15t]){faint}
+      %clr(%-40.40logger{39}){cyan}
+      %clr(:){faint}
+      %m%n${LOG_EXCEPTION_CONVERSION_WORD:-%wEx}
+    }
+  -->
+  <!--console output-->
+  <appender name="consoleAppender" class="ch.qos.logback.core.ConsoleAppender">
+    <encoder>
+      <!--<Pattern>
+        %d{yyyy-MM-dd} [%level] [%logger{100}] %msg %n
+      </Pattern>-->
+      <Pattern>
+        ${CONSOLE_LOG_PATTERN}
+      </Pattern>
+    </encoder>
+  </appender>
+
+  <!--file output-->
+  <appender name="fileAppender" class="ch.qos.logback.core.rolling.RollingFileAppender">
+    <!--指定 日志输出的 文件位置-->
+    <file>D:/test/spring-boot.log</file>
+    <encoder class="ch.qos.logback.classic.encoder.PatternLayoutEncoder">
+      <!--指定 日志输出的 的占位符-->
+      <Pattern>
+        %d{yyyy-MM-dd HH:mm:ss} [%level] [%logger{10}] %msg %n
+      </Pattern>
+    </encoder>
+    <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+      <!--
+        1 当D:/test/spring-boot.log 文件大小 大于等于10mb时，将10mb的 D:/test/spring-boot.log 先备份到 D:/test/logs/spring-boot.%d{yyyy-MM-dd}.%i.log，
+        2 在将大于10mb的日志 保存到 D:/test/spring-boot.log 中
+      -->
+      <fileNamePattern>
+        D:/test/logs/spring-boot.%d{yyyy-MM-dd}.%i.log
+      </fileNamePattern>
+      <timeBasedFileNamingAndTriggeringPolicy class="ch.qos.logback.core.rolling.SizeAndTimeBasedFNATP">
+        <maxFileSize>10MB</maxFileSize>
+      </timeBasedFileNamingAndTriggeringPolicy>
+    </rollingPolicy>
+  </appender>
+
+  <!--com.atguigu 包下的日志级别-->
+  <logger name="com.atguigu" level="DEBUG" additivity="false">
+    <appender-ref ref="consoleAppender" />
+    <appender-ref ref="fileAppender" />
+  </logger>
+
+  <!--root文件 下的日志级别-->
+  <root level="INFO">
+    <appender-ref ref="consoleAppender" />
+    <appender-ref ref="fileAppender" />
+  </root>
+
+</configuration>

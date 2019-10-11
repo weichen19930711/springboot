@@ -1,6 +1,7 @@
 package com.atguigu;
 
 import com.atguigu.bean.Person;
+import com.atguigu.service.HelloService;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -20,11 +21,14 @@ public class SpringBoot02ConfigApplicationTests {
 	private Person person;
 
 	@Autowired
+	private HelloService helloService;
+	@Autowired
 	private ApplicationContext ioc;
 
 	@Test
 	public void contextLoads() {
 		System.out.println(ioc.containsBean("helloService"));
+		System.out.println(helloService);
 		System.out.println(person);
 	}
 

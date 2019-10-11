@@ -1,13 +1,23 @@
-spring:
-  profiles:
-    active: dev
-
+#uml支持多文档块方式 ---分割
 
 server:
   port: 8080
+spring:
+  profiles: dev
+---
+server:
+  port: 8081
+spring:
+  profiles: prod
+---
+server:
+  port: 8082
+spring:
+  profiles: qa
+
 
 person:
-#  last_name: zsafeaef
+  #last-name: zsafeaef
   boss: false
   birth: 2019/10/11
   maps: {k1: v1, k2: 12}
@@ -18,4 +28,4 @@ person:
     name: 小狗
   last-name1: zws
   age: 1
-  email: a
+  email: 'b \n a'
