@@ -16,7 +16,7 @@ public class LoginController {
                       @RequestParam("password") String password,
                       Map<String, Object> map, HttpSession httpSession) {
     // 添加重定向，防止二次提交
-    if (!StringUtils.isEmpty(username) && "123456".equals(password)) {
+    if (!StringUtils.isEmpty(username) && "1".equals(password)) {
       httpSession.setAttribute("currentUser", username);
       return "redirect:/main.html";
     } else {
