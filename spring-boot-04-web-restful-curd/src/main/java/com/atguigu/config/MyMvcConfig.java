@@ -14,16 +14,18 @@ import java.util.List;
 @Configuration
 public class MyMvcConfig implements WebMvcConfigurer {
   private static final List<String> EXCLUDE_PATH= Arrays.asList("/", "/index", "/index.html", "/user/login", "/css/**", "/js/**", "/img/**", "/media/**", "/vendors/**", "/webjars/**", "/asserts/**");
-  @Override
+
+  /*@Override
   public void addViewControllers(ViewControllerRegistry registry) {
     registry.addViewController("/atguigu").setViewName("success");
-  }
+  }*/
 
   @Bean
   public WebMvcConfigurer webMvcConfigurer() {
     return new WebMvcConfigurer() {
       @Override
       public void addViewControllers(ViewControllerRegistry registry) {
+        registry.addViewController("/atguigu").setViewName("success");
         // 一定会去templates文件夹下寻找 名称为 'login'的静态文件
         registry.addViewController("/").setViewName("login");
         registry.addViewController("/index").setViewName("login");
@@ -31,11 +33,11 @@ public class MyMvcConfig implements WebMvcConfigurer {
         registry.addViewController("/main.html").setViewName("dashboard");
       }
 
-      @Override
+      /*@Override
       public void addInterceptors(InterceptorRegistry registry) {
         registry.addInterceptor(new LoginHandlerInterceptor()).addPathPatterns("/**").
                 excludePathPatterns(EXCLUDE_PATH);
-      }
+      }*/
     };
   }
 
